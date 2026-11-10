@@ -1,14 +1,32 @@
-#include<string>
-#include<vector>
+#pragma once
 
-std::vector<std::vector<std::string>>ticTacToeGrid(3, std::vector < std::string>(3));
+#include<string> 
+#include<vector> 
+
 
 namespace TicTacToe
 {
+	using twoDGrid = std::vector<std::vector<std::string>>; //making a "type alias" (for convenience and readability) 
 
-	using twoGrid = std::vector<std::vector<std::string>>;
-	void playGame(twoGrid ticTacToeGrid);
-	void playGame();
-	void updateGrid(twoGrid ticTaToecGrid, std::string theMove);
-	void updateGrid(twoGrid ticTacToeGrid, std::string theMove, std::string playerID);
+	//this is the grid (the gameboard)
+
+
+
+	//this function calls several other functions (helpers) and returns void (it just prints things)
+
+
+
+	void playGame(twoDGrid& ticTacToeGrid); //PASS BY REFERENCE!!!!!1
+
+
+	//this is a "helper" that is called by playGame (because playGame would be VERY complicated otherwise)
+	void updateGrid(twoDGrid& ticTacToeGrid, std::string theMove, std::string playerID);
+
+
+	void printTheGrid(twoDGrid& ticTacGrid);
+	
+	bool checkForWin(const twoDGrid& ticTacToeGrid);
+	bool checkForHorizontalWin(const twoDGrid& ticTacToeGrid);
+	bool checkForVerticalWin(const twoDGrid& ticTacToeGrid);
+	bool checkForDiagonalWin(const twoDGrid& ticTacToeGrid);
 }
