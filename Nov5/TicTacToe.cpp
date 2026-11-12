@@ -26,12 +26,12 @@ void TicTacToe::playGame(twoDGrid& ticTacToeGrid)
 
 		updateGrid(ticTacToeGrid, playerOMove, "O");
 		moveCount++;
-		printTheGrid(ticTacToeGrid);
-
 		if (moveCount >= 5)
 		{
 			isGameWon = checkForWin(ticTacToeGrid);
 		}
+		printTheGrid(ticTacToeGrid);
+
 	}
 
 } 
@@ -92,9 +92,9 @@ void TicTacToe::printTheGrid(twoDGrid& ticTacGrid)
 	{
 		for (int col = 0; col < ticTacGrid[0].size(); ++col)
 		{
-			std::cout << ticTacGrid[row][col];
+			std::cout << "|" << ticTacGrid[row][col];
 		}
-		std::cout  << std::endl;
+		std::cout << std::endl;
 		
 		//std::cout << "_______" << std::endl;
 	}
@@ -124,12 +124,16 @@ bool TicTacToe::checkForWin(const twoDGrid& ticTacToeGrid)
 
 bool TicTacToe::checkForHorizontalWin(const twoDGrid& ticTacToeGrid)
 {
-	for (int variableName)
+	for (int row = 0; row < 3; ++row)
 	{
-
+		if (ticTacToeGrid[row][0] == ticTacToeGrid[row][1] 
+			&& ticTacToeGrid[row][1] == ticTacToeGrid[row][2])
+			{
+				return true;
+			}
 	}
-	//if (ticTacToeGrid[0][0] == ticTacToeGrid[0][1] && ticTacToeGrid[0][1] == ticTacToeGrid[0][2])
-	//	{
+	return false;
+}
 	//		return true;
 	//	}
 	//else if (ticTacToeGrid[1][0] == ticTacToeGrid[1][1] && ticTacToeGrid[1][1] == ticTacToeGrid[1][2])
@@ -140,7 +144,7 @@ bool TicTacToe::checkForHorizontalWin(const twoDGrid& ticTacToeGrid)
 	//{
 	//	return true;
 	//}
-}
+
 
 bool TicTacToe::checkForVerticalWin(const twoDGrid& ticTacToeGrid)
 {
